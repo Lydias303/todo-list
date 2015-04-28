@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(version: 20150428164322) do
     t.string   "todo_item"
     t.boolean  "completed",  default: false
     t.boolean  "priority",   default: false
+    t.integer  "list_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "todos", ["list_id"], name: "index_todos_on_list_id", using: :btree
 
 end
