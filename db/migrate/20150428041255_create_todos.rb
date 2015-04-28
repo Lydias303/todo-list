@@ -2,8 +2,9 @@ class CreateTodos < ActiveRecord::Migration
   def change
     create_table :todos do |t|
       t.string  "todo_item"
-      t.boolean "completed", default: "false"
-      t.boolean "priority", default: "false"
+      t.boolean "completed", default: false
+      t.boolean "priority", default: false
+      t.references "list", index: true
 
       t.timestamps null: false
     end
