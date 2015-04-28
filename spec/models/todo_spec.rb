@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Todo, type: :model do
-  lydias_todo = Todo.new(todo_item: "Make a todo rails app!",
-                         completed: false,
-                         priority: true)
+  lydias_list = List.create(title: "New List")
 
-  nathans_todo = Todo.new(todo_item: "Wash the car")
+  lydias_todo = Todo.create(todo_item: "Make a todo rails app!",
+                            completed: false,
+                            priority: true,
+                            list_id: lydias_list.id)
+
+  nathans_todo = Todo.create(todo_item: "Wash the car")
 
   it "is valid" do
     expect(lydias_todo).to be_valid
@@ -22,5 +25,9 @@ RSpec.describe Todo, type: :model do
 
   it "has a default priority status of false" do
     expect(nathans_todo.priority).to eq(false)
+  end
+
+  it "belongs to a list" do
+    expect(lydias_todo.list_id).to eq(lydias_list.id)
   end
 end
