@@ -22,6 +22,8 @@ gem 'sass-rails', '>= 3.2'
 
 gem 'pry'
 
+gem 'responders'
+
 group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'

@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
+  respond_to :html, :json
+
   def index
     @lists = List.all
-    @list  = List.new
+    respond_with @list = List.new
   end
 
   def show
-    @list = List.find(params[:id])
+    respond_with @list = List.find(params[:id])
   end
 
   def create
