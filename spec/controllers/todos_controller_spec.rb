@@ -9,4 +9,13 @@ RSpec.describe TodosController, :type => :controller do
     assert_redirected_to root_path
     expect(list.todos.count).to eq(1)
   end
+
+  it "can delete a todo on a list" do
+    todo = create(:todo)
+    expect(Todo.count).to eq(1)
+    delete :destroy, todo: { id: todo.id }
+
+    assert_redirected_to root_path
+    expect(Todo.count).to eq(0)
+  end
 end
