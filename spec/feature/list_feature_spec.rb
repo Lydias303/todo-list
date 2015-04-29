@@ -5,8 +5,6 @@ describe "an authenticated user" do
 
   before(:each) do
     visit '/'
-    list = create(:list)
-    todo = create(:todo)
   end
 
   it "can create a list" do
