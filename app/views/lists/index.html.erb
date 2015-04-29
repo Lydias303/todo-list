@@ -43,7 +43,7 @@
             <% @lists. each do |list| %>
             <div class="list-group">
                <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-group-item active todo-list">
-                 <h5><span class="glyphicon glyphicon-list"></span> <%= list.title %></h5>
+                 <h5 class="list-title-display"><span class="glyphicon glyphicon-list"></span> <%= list.title %></h5>
               </a>
             </div>
             <% end %>
@@ -54,7 +54,7 @@
                 <form class="navbar-form" role="search">
                   <div class="input-group col-lg-12" id="new-todo">
                     <div class="input-group-btn">
-                      <input type="text" placeholder="New todo..." id="new-todo-input" class="form-control">
+                      <input type="text" placeholder="Add New Todo Item" id="new-todo-input" class="form-control">
                         <button class="btn btn-default" type="submit" id="add-todo"><i class="glyphicon glyphicon-plus"></i></button>
                     </div>
                   </div>
@@ -76,19 +76,7 @@
                   </div>
                   <div class="panel-body">
                     <ul class="list-group" id="todo-item">
-                      <li class="list-group-item"a>
-                        <div class="checkbox">
-                          <input type="checkbox" id="checkbox" />
-                          <label for="checkbox">
-
-                          </label>
-                        </div>
-                        <div class="pull-right action-buttons">
-                          <a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-pencil"></span></a>
-                          <a href="http://www.jquery2dotnet.com" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
-                          <a href="http://www.jquery2dotnet.com" class="flag"><span class="glyphicon glyphicon-flag"></span></a>
-                        </div>
-                      </li>
+              
                     </ul>
                   </div>
                   <div class="panel-footer">
