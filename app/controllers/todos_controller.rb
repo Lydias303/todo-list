@@ -1,19 +1,14 @@
 class TodosController < ApplicationController
+  respond_to :html, :json
 
   def create
-    @list = List.find(params[:todo][:list_id]).todos.create(todo_params)
-    redirect_to root_path
+    todo = List.find(params[:todo][:list]).todos.create(todo_item: params[:todo][:text])
+    respond_with({ todo: todo }, :status => 201, :location => root_path)
   end
 
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy
     redirect_to root_path
-  end
-
-  private
-
-  def todo_params
-    params.require(:todo).permit(:todo_item, :completed, :priority)
   end
 end

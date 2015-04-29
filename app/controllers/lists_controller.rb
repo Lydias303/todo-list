@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @lists = List.all
+    @lists = List.order(created_at: :desc)
     respond_with @list = List.new
   end
 
