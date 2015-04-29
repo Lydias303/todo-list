@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    respond_with @list = List.find(params[:id])
+    respond_with @list = List.find(params[:id]).as_json(:include => [:todos])
   end
 
   def create

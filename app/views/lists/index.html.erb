@@ -18,6 +18,7 @@
                   <div class="panel-body">
                     <div class="nav navbar-nav">
                       <%= form_for @list, url: {action: "create"}, html: {class: "list-create"} do |f| %>
+                        <%  f.label :title %>
                         <%= f.text_field :title %>
                         <%= f.submit "Create List" %>
                       <% end %>
@@ -74,8 +75,8 @@
                     </div>
                   </div>
                   <div class="panel-body">
-                    <ul class="list-group">
-                      <li class="list-group-item">
+                    <ul class="list-group" id="todo-item">
+                      <li class="list-group-item"a>
                         <div class="checkbox">
                           <input type="checkbox" id="checkbox" />
                           <label for="checkbox">
