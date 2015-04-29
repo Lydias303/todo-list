@@ -9,12 +9,12 @@ $(document).ready(function () {
 
     $.getJSON(url).then(function (list) {
       console.log(list)
+      $("#todo-item").empty();
       $('#todo-list').removeClass('hidden');
       $('.list-title').html('<h1>' + list.title + '</h1>');
       $('#new-todo').data('list-id', list.id);
-      debugger;
       for(var i = 0; i < list.todos.length; i++) {
-        $("#todo-item").append("<li class='list-group-item'>"+ list.todos[i] +"</li>");
+        $("#todo-item").append("<input type='checkbox' data-todo-id='id' />"+"<li class='list-group-item'>"+ list.todos[i].todo_item +"</li>");
        }
       })
     });
