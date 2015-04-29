@@ -14,7 +14,12 @@ $(document).ready(function () {
       $('.list-title').html('<h1>' + list.title + '</h1>');
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
-        $("#todo-item").append("<input type='checkbox' data-todo-id='id' />"+"<li class='list-group-item'>"+ list.todos[i].todo_item +"</li>");
+        var todo = list.todos[i]
+        $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
+         todo.id + "' />" + todo.todo_item +
+         "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + todo.id + "' ></span></a>" +
+         "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + todo.id + "' ></span></a>" +
+         "</li>");
        }
       })
     });
