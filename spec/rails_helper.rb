@@ -4,6 +4,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require "database_cleaner"
 require 'factory_girl_rails'
+require 'capybara/rspec'
+
 
 ActiveRecord::Migration.maintain_test_schema!
 

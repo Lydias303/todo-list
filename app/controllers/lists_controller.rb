@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
+  respond_to :html, :json
+
   def index
-    @lists = List.all
-    @list  = List.new
+    @lists = List.order(created_at: :desc)
+    respond_with @list = List.new
   end
 
   def show
-    @list = List.find(params[:id])
+    respond_with @list = List.find(params[:id]).as_json(:include => [:todos])
   end
 
   def create

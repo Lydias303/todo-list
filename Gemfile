@@ -20,6 +20,10 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'sass-rails', '>= 3.2'
 
+gem 'pry'
+
+gem 'responders'
+
 group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
