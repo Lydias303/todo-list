@@ -31,9 +31,8 @@ $(document).ready(function () {
 
          e.currentTarget.parentElement.remove();
        });
-
-      })
-      });
+     })
+   });
 
   $('#add-todo').on('click', function (e) {
     e.preventDefault();
