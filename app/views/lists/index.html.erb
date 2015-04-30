@@ -32,14 +32,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 bhoechie-tab-container">
-          <div class="col-lg-3 bhoechie-tab-menu">
+          <div class="col-lg-4 bhoechie-tab-menu">
             <% @lists. each do |list| %>
             <div class="list-group">
 
                <div class="list-group-item active todo-list">
                  <h5 class="list-title-display">
                    <span>  <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-title-link"><%= list.title %></a>
-                  <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
+                  <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default btn-sm delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
                     </h5>
             </div>
             </div>
