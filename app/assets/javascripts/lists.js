@@ -8,27 +8,31 @@ $(document).ready(function () {
     var url = $(this).attr('href');
 
     $.getJSON(url).then(function (list) {
-      console.log(list)
+`      console.log(list)`
       $("#todo-item").empty();
-      $('#todo-list').removeClass('hidden');
+      $('#todo-list').toggleClass('hidden');
       $('.list-title').html('<h1>' + list.title + '</h1>');
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
         var todo = list.todos[i]
-        $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
-         todo.id + "' />" + todo.todo_item +
-         "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + todo.id + "' ></span></a>" +
-         "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + todo.id + "' ></span></a>" +
+        $("#todo-item").append("<li class='list-group-item' todo-id='" + todo.id + "'><input type='checkbox' id='checked' />" +
+        "<label class='checkedLabel' for='#checked'>" + todo.todo_item + "</label>" + "<button class='btn btn-sml btn-default remove'><span class='glyphicon glyphicon-trash'></span></button>" +
          "</li>");
        }
-      })
-    });
+       $('.remove').on('click', function (e) {
+         e.preventDefault();
+         var todo = e.currentTarget.parentElement;
+         var todo_id = $(todo).attr('todo-id')
 
-    $('#delete-button').on('click', function () {
-        $.post('/lists/destroy', {
-          list: list
-        });
-    });
+         $.ajax({
+            url: '/todos/' + todo_id,
+            type: 'DELETE'
+         });
+
+         e.currentTarget.parentElement.remove();
+       });
+     })
+   });
 
   $('#add-todo').on('click', function (e) {
     e.preventDefault();
@@ -40,13 +44,6 @@ $(document).ready(function () {
         list: list,
         text: todoText
       }
-    }).then(function (d) {
-
-      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
-       d.todo.id + "' />" + d.todo.todo_item +
-       "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + d.todo.id + "' ></span></a>" +
-       "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + d.todo.id + "' ></span></a>" +
-       "</li>");
-    });
+    }).then(location.reload(true));
   });
 });

@@ -1,8 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'Arvo', serif;
+}
+
 .agile {
   padding: 40px;
+}
+
+h3 {
+  color: #5A55A3;
+}
+
+a:hover {
+  color: #9fa7a8;
+  text-decoration:none;
 }
 
 .delete-button {
@@ -20,7 +33,6 @@
   margin-right: 70px;
 }
 
-/*  bhoechie tab */
 div.tab-container{
   z-index: 10;
   background-color: #ffffff;
@@ -57,17 +69,17 @@ div.bhoechie-tab-menu div.list-group>a .fa {
   color: #5A55A3;
 }
 
-div.bhoechie-tab-menu div.list-group>div.active {
+div.bhoechie-tab-menu div.list-group>span.active {
   background-color: #5A55A3;
   background-image: #5A55A3;
   color: #ffffff;
+  margin-bottom: 10px;
 }
-div.bhoechie-tab-menu div.list-group>div.active:after{
+div.bhoechie-tab-menu div.list-group>span.active:after{
   content: '';
   position: absolute;
   left: 100%;
   top: 50%;
-  // margin-top: -13px;
   border-left: 0;
   border-bottom: 13px solid transparent;
   border-top: 13px solid transparent;
@@ -76,11 +88,24 @@ div.bhoechie-tab-menu div.list-group>div.active:after{
 
 div.bhoechie-tab-content{
   background-color: #ffffff;
-  /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
 
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
+}
+
+#checked:checked + .checkedLabel {
+  text-decoration: line-through;
+  color: rgb(128, 144, 160);
+}
+
+.remove {
+  margin-left: 500px;
+}
+
+label.checkedLabel {
+  margin-left: 15px;
+  font-size: 20px;
 }
