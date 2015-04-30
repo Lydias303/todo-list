@@ -83,7 +83,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
 
-#checker:checked + .checkedLabel {
+#checked:checked + .checkedLabel {
   text-decoration: line-through;
   color: rgb(128, 144, 160);
 }

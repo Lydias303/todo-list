@@ -15,8 +15,8 @@ $(document).ready(function () {
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
         var todo = list.todos[i]
-        $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker' />" + "<label for='checker' class='checkedLabel'>"+ d.todo.todo_item +
-         "</label>" + "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
+        $("#todo-item").append("<li class='list-group-item' todo-id='" + todo.id + "'><input type='checkbox' id='checked' />" +
+        "<label class='checkedLabel' for='#checked'>" + todo.todo_item + "</label>" + "<button class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></button>" +
          "</li>");
        }
        $('.remove').on('click', function (e) {
@@ -32,11 +32,6 @@ $(document).ready(function () {
          e.currentTarget.parentElement.remove();
        });
 
-       $('.checker').on('click', function (e) {
-         console.log(e);
-         var todo = e.currentTarget.parentElement;
-         $(todo).toggleClass('checked')
-       });
       })
       });
 
@@ -51,8 +46,8 @@ $(document).ready(function () {
         text: todoText
       }
     }).then(function (d) {
-      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker' />" + "<label for='checker' class='checkedLabel'>"+ d.todo.todo_item +
-       "</label>" + "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
+      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker'/>" + "<label class='checkedLabel' for='#checker'>" + d.todo.todo_item + "</label>" +
+       "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
        "</li>");
     });
   });
