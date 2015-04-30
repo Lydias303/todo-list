@@ -8,7 +8,7 @@ $(document).ready(function () {
     var url = $(this).attr('href');
 
     $.getJSON(url).then(function (list) {
-      console.log(list)
+`      console.log(list)`
       $("#todo-item").empty();
       $('#todo-list').removeClass('hidden');
       $('.list-title').html('<h1>' + list.title + '</h1>');
@@ -41,7 +41,7 @@ $(document).ready(function () {
         text: todoText
       }
     }).then(function (d) {
-
+      debugger;
       $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
        d.todo.id + "' />" + d.todo.todo_item +
        "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + d.todo.id + "' ></span></a>" +
