@@ -3,48 +3,45 @@
     <img src="/assets/agile.png"/>
   </div>
 </div>
-<div class="container-fluid main-container">
-  <div class="col-md-2 sidebar">
-    <div class="row">
-      <div class="absolute-wrapper"> </div>
-        <div class="side-menu">
-          <div class="side-menu-container">
-            <ul class="nav navbar-nav">
-              <li class="panel panel-info" id="dropdown">
-                <a data-toggle="collapse" href="#dropdown-lvl1">
-                  <span class="glyphicon glyphicon-user"></span>Create A New Todo List<span class="caret"></span>
-                </a>
-                <div id="dropdown-lvl1" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="nav navbar-nav">
-                      <%= form_for @list, url: {action: "create"}, html: {class: "list-create"} do |f| %>
-                        <%  f.label :title %>
-                        <%= f.text_field :title %>
-                        <%= f.submit "Create List" %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+<div class="container">
+  <div class="panel-body col-md-4">
+    <ul class="nav navbar-nav">
+      <li class="panel panel-info" id="dropdown">
+        <a data-toggle="collapse" href="#dropdown-lvl1">
+          <h3>Create A New Todo List</h3><span class="caret"></span>
+        </a>
+        <div id="dropdown-lvl1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="nav navbar-nav">
+              <%= form_for @list, url: {action: "create"}, html: {class: "list-create"} do |f| %>
+                <%  f.label :title %>
+                <%= f.text_field :title %>
+                <%= f.submit "Create List" %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 list-title"></div>
-      </div>
-    </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
     <div class="container">
       <div class="row">
         <div class="col-lg-12 bhoechie-tab-container">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+          <div class="col-lg-4 bhoechie-tab-menu">
             <% @lists. each do |list| %>
             <div class="list-group">
-               <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-group-item active todo-list">
-                 <h5><span class="glyphicon glyphicon-list"></span> <%= list.title %></h5>
-              </a>
+
+               <div class="list-group-item active todo-list">
+                 <h5 class="list-title-display">
+                   <span>  <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-title-link"><%= list.title %></a>
+                  <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default btn-sm delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
+                    </h5>
+            </div>
             </div>
             <% end %>
           </div>
@@ -54,8 +51,11 @@
                 <form class="navbar-form" role="search">
                   <div class="input-group col-lg-12" id="new-todo">
                     <div class="input-group-btn">
-                      <input type="text" placeholder="New todo..." id="new-todo-input" class="form-control">
+                      <input type="text" placeholder="Add New Todo Item" id="new-todo-input" class="form-control">
                         <button class="btn btn-default" type="submit" id="add-todo"><i class="glyphicon glyphicon-plus"></i></button>
+                    </div>
+                    <div class="list-title">
+
                     </div>
                   </div>
                 </form>
@@ -76,19 +76,7 @@
                   </div>
                   <div class="panel-body">
                     <ul class="list-group" id="todo-item">
-                      <li class="list-group-item"a>
-                        <div class="checkbox">
-                          <input type="checkbox" id="checkbox" />
-                          <label for="checkbox">
 
-                          </label>
-                        </div>
-                        <div class="pull-right action-buttons">
-                          <a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-pencil"></span></a>
-                          <a href="http://www.jquery2dotnet.com" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
-                          <a href="http://www.jquery2dotnet.com" class="flag"><span class="glyphicon glyphicon-flag"></span></a>
-                        </div>
-                      </li>
                     </ul>
                   </div>
                   <div class="panel-footer">

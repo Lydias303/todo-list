@@ -14,4 +14,9 @@ class ListsController < ApplicationController
     List.create(title: params[:list][:title])
     redirect_to root_path
   end
+
+  def destroy
+    List.find(params[:id]).destroy
+    redirect_to root_url
+  end
 end
