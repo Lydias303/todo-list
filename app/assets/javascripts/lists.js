@@ -24,6 +24,12 @@ $(document).ready(function () {
       })
     });
 
+    $('#delete-button').on('click', function () {
+        $.post('/lists/destroy', {
+          list: list
+        });
+    });
+
   $('#add-todo').on('click', function (e) {
     e.preventDefault();
     var todoText = $('#new-todo-input').val();
