@@ -15,37 +15,30 @@ $(document).ready(function () {
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
         var todo = list.todos[i]
-        $("#todo-item").append("<li class='list-group-item' todo-id='" + todo.id + "'><input type='checkbox' data-todo-id='" +
-         todo.id + "' />" + todo.todo_item +
-         "<button class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></button>" +
+        $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker' />" + "<label for='checker' class='checkedLabel'>"+ d.todo.todo_item +
+         "</label>" + "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
          "</li>");
        }
        $('.remove').on('click', function (e) {
          e.preventDefault();
-         console.log(e.currentTarget.parentElement)
          var todo = e.currentTarget.parentElement;
          var todo_id = $(todo).attr('todo-id')
-         console.log(todo_id)
-
 
          $.ajax({
             url: '/todos/' + todo_id,
-            type: 'DELETE',
-            success: function(result) {
-              console.log('deleted')
-            }
+            type: 'DELETE'
          });
 
          e.currentTarget.parentElement.remove();
        });
+
+       $('.checker').on('click', function (e) {
+         console.log(e);
+         var todo = e.currentTarget.parentElement;
+         $(todo).toggleClass('checked')
+       });
       })
       });
-
-    // $("#remove").on('click', function () {
-    //   debugger;
-    //   $('.data-todo-id=' + todo.id ).remove();
-    //   });
-
 
   $('#add-todo').on('click', function (e) {
     e.preventDefault();
@@ -58,33 +51,9 @@ $(document).ready(function () {
         text: todoText
       }
     }).then(function (d) {
-      debugger;
-      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
-       d.todo.id + "' />" + d.todo.todo_item +
-       "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
+      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker' />" + "<label for='checker' class='checkedLabel'>"+ d.todo.todo_item +
+       "</label>" + "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
        "</li>");
-      //  $("#delete-button").on('click', function(e){
-      //      e.preventDefault();
-      //      console.log('hello')
-      //      var a = $('#remove')
-       //
-      //      a.closest('li').remove();
-      //  });
     });
   });
-
-
 });
-
-
-// $("#delete-button").on("click", function() {
-//   $(this).remove()
-// });
-//
-// $("#delete-button").on('click', function(e){
-//     e.preventDefault();
-//     console.log('hello')
-//     var a = $('#remove')
-//
-//     a.closest('li').remove();
-// // });

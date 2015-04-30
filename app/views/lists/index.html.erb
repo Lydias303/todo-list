@@ -89,3 +89,11 @@
                 </center>
               </div>
             </div>
+
+            <script>
+            $('.checker').on('click', function (e) {
+              console.log(e);
+              var todo = e.currentTarget.parentElement;
+              $(todo).toggleClass('checked')
+            });
+            </script>
