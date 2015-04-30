@@ -25,75 +25,40 @@
     </ul>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 bhoechie-tab-container">
+      <div class="col-lg-4 bhoechie-tab-menu">
+        <% @lists.each do |list| %>
+        <div class="list-group">
+          <span class="list-group-item active">
+             <h5 class="list-title-display">
+          <span>  <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-title-link todo-list"><%= list.title %></a>
+              <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default btn-sm delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
+             </h5>
+          </span>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-lg-8 bhoechie-tab">
+        <div class="panel panel-default hidden" id="todo-list">
+          <div class="panel-heading">
+            <form class="navbar-form">
+              <div class="input-group col-lg-12" id="new-todo">
+                <div class="input-group-btn">
+                  <input type="text" placeholder="Add New Todo Item" id="new-todo-input" class="form-control">
+                    <button class="btn btn-default" type="submit" id="add-todo"><i class="glyphicon glyphicon-plus"></i></button>
+                </div>
+                <div class="list-title">
 
-
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 bhoechie-tab-container">
-          <div class="col-lg-4 bhoechie-tab-menu">
-            <% @lists.each do |list| %>
-            <div class="list-group">
-
-               <span class="list-group-item active">
-                 <h5 class="list-title-display">
-                   <span>  <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-title-link todo-list"><%= list.title %></a>
-                  <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default btn-sm delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
-                    </h5>
-            </span>
-            </div>
-            <% end %>
-          </div>
-          <div class="col-lg-8 bhoechie-tab">
-            <div class="panel panel-default hidden" id="todo-list">
-              <div class="panel-heading">
-                <form class="navbar-form" role="search">
-                  <div class="input-group col-lg-12" id="new-todo">
-                    <div class="input-group-btn">
-                      <input type="text" placeholder="Add New Todo Item" id="new-todo-input" class="form-control">
-                        <button class="btn btn-default" type="submit" id="add-todo"><i class="glyphicon glyphicon-plus"></i></button>
-                    </div>
-                    <div class="list-title">
-
-                    </div>
-                  </div>
-                </form>
-                <div class="bhoechie-tab-content active">
-                  <center>
-                    <div class="pull-right action-buttons">
-                      <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                          <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
-                        </button>
-                        <ul class="dropdown-menu slidedown">
-                          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Edit</a></li>
-                          <li><a href="#"><span class="glyphicon glyphicon-trash"></span>Delete</a></li>
-                          <li><a href="#"><span class="glyphicon glyphicon-flag"></span>Flag</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel-body">
-                    <ul class="list-group" id="todo-item">
-
-                    </ul>
-                  </div>
-                  <div class="panel-footer">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <h6> Total Count <span class="label label-info"></span></h6>
-                      </div>
-                    </div>
-                  </div>
-                </center>
+                </div>
               </div>
-            </div>
+            </form>
+            <div class="panel-body">
+              <ul class="list-group" id="todo-item">
 
-            <script>
-            $('.checker').on('click', function (e) {
-              console.log(e);
-              var todo = e.currentTarget.parentElement;
-              $(todo).toggleClass('checked')
-            });
-            </script>
+              </ul>
+            </div>
+          </center>
+        </div>
+      </div>

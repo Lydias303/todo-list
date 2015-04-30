@@ -10,13 +10,13 @@ $(document).ready(function () {
     $.getJSON(url).then(function (list) {
 `      console.log(list)`
       $("#todo-item").empty();
-      $('#todo-list').removeClass('hidden');
+      $('#todo-list').toggleClass('hidden');
       $('.list-title').html('<h1>' + list.title + '</h1>');
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
         var todo = list.todos[i]
         $("#todo-item").append("<li class='list-group-item' todo-id='" + todo.id + "'><input type='checkbox' id='checked' />" +
-        "<label class='checkedLabel' for='#checked'>" + todo.todo_item + "</label>" + "<button class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></button>" +
+        "<label class='checkedLabel' for='#checked'>" + todo.todo_item + "</label>" + "<button class='btn btn-sml btn-default remove'><span class='glyphicon glyphicon-trash'></span></button>" +
          "</li>");
        }
        $('.remove').on('click', function (e) {
@@ -45,10 +45,6 @@ $(document).ready(function () {
         list: list,
         text: todoText
       }
-    }).then(function (d) {
-      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' id='checker'/>" + "<label class='checkedLabel' for='#checker'>" + d.todo.todo_item + "</label>" +
-       "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
-       "</li>");
-    });
+    }).then(location.reload(true));
   });
 });

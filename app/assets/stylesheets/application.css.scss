@@ -1,8 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'Arvo', serif;
+}
+
 .agile {
   padding: 40px;
+}
+
+a:hover {
+  color: #9fa7a8;
+  text-decoration:none;
 }
 
 .delete-button {
@@ -61,6 +70,7 @@ div.bhoechie-tab-menu div.list-group>span.active {
   background-color: #5A55A3;
   background-image: #5A55A3;
   color: #ffffff;
+  margin-bottom: 10px;
 }
 div.bhoechie-tab-menu div.list-group>span.active:after{
   content: '';
@@ -86,4 +96,13 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 #checked:checked + .checkedLabel {
   text-decoration: line-through;
   color: rgb(128, 144, 160);
+}
+
+.remove {
+  margin-left: 500px;
+}
+
+label.checkedLabel {
+  margin-left: 15px;
+  font-size: 20px;
 }
