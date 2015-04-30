@@ -35,7 +35,12 @@ $(document).ready(function () {
         text: todoText
       }
     }).then(function (d) {
-      console.log(d);
+
+      $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
+       d.todo.id + "' />" + d.todo.todo_item +
+       "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + d.todo.id + "' ></span></a>" +
+       "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + d.todo.id + "' ></span></a>" +
+       "</li>");
     });
   });
 });

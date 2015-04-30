@@ -25,7 +25,8 @@ describe "an authenticated user" do
       fill_in "new-todo-input", with: "Go to the Store"
       click_button "add-todo"
     end
-    save_and_open_page
-    expect(Todo.count).to eq(1)
+
+    sleep 3
+    have_css(".list-group-item[data-todo-id='1']")
   end
 end
