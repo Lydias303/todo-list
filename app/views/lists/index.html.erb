@@ -35,12 +35,13 @@
           <div class="col-lg-3 bhoechie-tab-menu">
             <% @lists. each do |list| %>
             <div class="list-group">
-               <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-group-item active todo-list">
-                 <h5 class="list-title-display"><span class="glyphicon glyphicon-list"></span> <%= list.title %></h5>
-              </a>
-              <div class="btn-group">
-                <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></a>
-              </div>
+
+               <div class="list-group-item active todo-list">
+                 <h5 class="list-title-display">
+                   <span>  <a href="lists/<%= list.id %>" data-list-id="<%= list.id %>" class="list-title-link"><%= list.title %></a>
+                  <a href="lists/<%= list.id %>" data-method="delete" rel="nofollow"data-list-id="<%= list.id %>" class="btn btn-default delete-button"><i class="glyphicon glyphicon-trash"></i></a></span>
+                    </h5>
+            </div>
             </div>
             <% end %>
           </div>
