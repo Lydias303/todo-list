@@ -57,12 +57,12 @@ div.bhoechie-tab-menu div.list-group>a .fa {
   color: #5A55A3;
 }
 
-div.bhoechie-tab-menu div.list-group>div.active {
+div.bhoechie-tab-menu div.list-group>span.active {
   background-color: #5A55A3;
   background-image: #5A55A3;
   color: #ffffff;
 }
-div.bhoechie-tab-menu div.list-group>div.active:after{
+div.bhoechie-tab-menu div.list-group>span.active:after{
   content: '';
   position: absolute;
   left: 100%;
