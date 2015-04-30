@@ -21,4 +21,14 @@ RSpec.describe ListsController, :type => :controller do
 
     expect(response).to render_template("show")
   end
+
+  it "can delete a list" do
+    list = create(:list)
+
+    expect(List.count).to eq(1)
+
+    delete :destroy, id: list.id
+
+    expect(List.count).to eq(0)
+  end
 end

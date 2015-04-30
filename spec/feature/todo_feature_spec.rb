@@ -26,7 +26,6 @@ describe "an authenticated user" do
       click_button "add-todo"
     end
 
-    sleep 3
     have_css(".list-group-item[data-todo-id='1']")
   end
 end
