@@ -15,20 +15,37 @@ $(document).ready(function () {
       $('#new-todo').data('list-id', list.id);
       for(var i = 0; i < list.todos.length; i++) {
         var todo = list.todos[i]
-        $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
+        $("#todo-item").append("<li class='list-group-item' todo-id='" + todo.id + "'><input type='checkbox' data-todo-id='" +
          todo.id + "' />" + todo.todo_item +
-         "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + todo.id + "' ></span></a>" +
-         "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + todo.id + "' ></span></a>" +
+         "<button class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></button>" +
          "</li>");
        }
-      })
-    });
+       $('.remove').on('click', function (e) {
+         e.preventDefault();
+         console.log(e.currentTarget.parentElement)
+         var todo = e.currentTarget.parentElement;
+         var todo_id = $(todo).attr('todo-id')
+         console.log(todo_id)
 
-    $('#delete-button').on('click', function () {
-        $.post('/lists/destroy', {
-          list: list
-        });
-    });
+
+         $.ajax({
+            url: '/todos/' + todo_id,
+            type: 'DELETE',
+            success: function(result) {
+              console.log('deleted')
+            }
+         });
+
+         e.currentTarget.parentElement.remove();
+       });
+      })
+      });
+
+    // $("#remove").on('click', function () {
+    //   debugger;
+    //   $('.data-todo-id=' + todo.id ).remove();
+    //   });
+
 
   $('#add-todo').on('click', function (e) {
     e.preventDefault();
@@ -44,9 +61,30 @@ $(document).ready(function () {
       debugger;
       $("#todo-item").append("<li class='list-group-item'><input type='checkbox' data-todo-id='" +
        d.todo.id + "' />" + d.todo.todo_item +
-       "<a href='#' class='trash'><span class='glyphicon glyphicon-trash' data-todo-id='" + d.todo.id + "' ></span></a>" +
-       "<a href='#' class='flag'><span class='glyphicon glyphicon-flag data-todo-id='" + d.todo.id + "' ></span></a>" +
+       "<button class='btn btn-danger remove' id='delete-button'><span class='glyphicon glyphicon-trash'></span></button>" +
        "</li>");
+      //  $("#delete-button").on('click', function(e){
+      //      e.preventDefault();
+      //      console.log('hello')
+      //      var a = $('#remove')
+       //
+      //      a.closest('li').remove();
+      //  });
     });
   });
+
+
 });
+
+
+// $("#delete-button").on("click", function() {
+//   $(this).remove()
+// });
+//
+// $("#delete-button").on('click', function(e){
+//     e.preventDefault();
+//     console.log('hello')
+//     var a = $('#remove')
+//
+//     a.closest('li').remove();
+// // });
